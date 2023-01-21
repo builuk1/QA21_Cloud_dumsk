@@ -1,2 +1,2 @@
-#example8
-print('example')
+#example 8
+print('for example')
