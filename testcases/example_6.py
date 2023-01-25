@@ -14,7 +14,7 @@ def register_user():
     # length = len(my_user.nick)
     options = ChromeOptions()
     foptions = FirefoxOptions()
-    options.headless = False#True Запуск теста без включения браузера
+    options.headless = True#True Запуск теста без включения браузера
 
     path = f'{os.getcwd()}/drivers/chromedriver'
     service = Service(executable_path=path)
@@ -47,17 +47,16 @@ def register_user():
 
     login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '//td[@class="newscol"]/div')))
     login = login_textarea.text
-    f = driver.find_element('xpath', '//td[@class="newscol"]/div')
-    f.text
-    print(login)
-    time.sleep(15)
-
 
     driver.close()
 
+    s = '''Пользователь с таким адресом электронной почты уже зарегистрирован.
+Пользователь с таким ником уже зарегистрирован. Придумайте другой
+Укажите ник.
+Укажите е-mail. Он нужен для входа в сайт.
+Длина пароля должна быть не меньше 6 символов. А то его у вас украдут, а мы виноваты будем.'''
 
-
-    return my_user.nick, login #'Пользователь с таким ником уже зарегистрирован. Придумайте другой'
+    return login, s
 
 if __name__ == '__main__':
     print(register_user())

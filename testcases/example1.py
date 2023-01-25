@@ -13,7 +13,7 @@ def register_user():
     my_user = User()
     options = ChromeOptions()
     foptions = FirefoxOptions()
-    options.headless = False#True Запуск теста без включения браузера
+    options.headless = True#True Запуск теста без включения браузера
 
     path = f'{os.getcwd()}/drivers/chromedriver'
     service = Service(executable_path=path)
