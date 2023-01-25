@@ -1,7 +1,7 @@
 #https://dumskaya.net/
 def register_user():
     import time
-    from Lesson.factory.new_user import User
+    from factory.new_user import User
     from selenium import webdriver
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as EC
@@ -11,8 +11,6 @@ def register_user():
     import os
 
     my_user = User()
-    # my_user.nick = my_user.nick + my_user.nick + my_user.nick + my_user.nick
-    # length = len(my_user.nick)
     options = ChromeOptions()
     foptions = FirefoxOptions()
     options.headless = False#True Запуск теста без включения браузера
@@ -43,8 +41,8 @@ def register_user():
     enter_registration_button = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_enter_registration_button)))
     enter_registration_button.click()
 
-    # register_email_field = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_email)))
-    # register_email_field.send_keys(my_user.email)
+    register_email_field = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_email)))
+    register_email_field.send_keys(my_user.email)
 
     register_nick = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_nick)))
     register_nick.send_keys(my_user.nick)
@@ -61,14 +59,10 @@ def register_user():
     register_gender_button = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_button)))
     register_gender_button.click()
 
-    # login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_user_finish)))
-    # login = login_textarea.text
-
-    login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '//td[@class="newscol"]/div')))
+    login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_user_finish)))
     login = login_textarea.text
-    print(login)
-    time.sleep(5000)
-    # driver.close()
+
+    driver.close()
 
 
 
