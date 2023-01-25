@@ -11,8 +11,6 @@ def register_user():
     import os
 
     my_user = User()
-    # my_user.nick = my_user.nick + my_user.nick + my_user.nick + my_user.nick
-    # length = len(my_user.nick)
     options = ChromeOptions()
     foptions = FirefoxOptions()
     options.headless = False#True Запуск теста без включения браузера
@@ -64,10 +62,6 @@ def register_user():
     login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_user_finish)))
     login = login_textarea.text
 
-    # login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '//td[@class="newscol"]/div')))
-    # login = login_textarea.text
-    # print(login)
-    # time.sleep(5000)
     driver.close()
 
 
