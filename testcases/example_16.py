@@ -51,7 +51,7 @@ def register_user():
     register_password.send_keys(my_user.password)
 
     register_password2 = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_password2)))
-    register_password2.send_keys(my_user.password)
+    register_password2.send_keys(my_user.password + '1')
 
     register_gender_male = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_gender_male)))
     register_gender_male.click()
@@ -59,12 +59,15 @@ def register_user():
     register_gender_button = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_register_button)))
     register_gender_button.click()
 
-    login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', xpath_user_finish)))
+    login_textarea = WebDriverWait(driver, 30).until(EC.presence_of_element_located(('xpath', '//td[@class="newscol"]/div')))
     login = login_textarea.text
 
     driver.close()
 
-    return my_user.nick, login #'Пользователь с таким ником уже зарегистрирован. Придумайте другой'
-    # return  login_error, 'Пользователь с таким ником уже зарегистрирован. Придумайте другой'
+    s = '''Пароли не совпадают.'''
+
+    return login, s
+
+
 if __name__ == '__main__':
     print(register_user())
