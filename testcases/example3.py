@@ -1,2 +1,2 @@
-#Example3
-print("Hello World!")
+#Task3
+print('example3')
